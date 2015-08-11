@@ -19,7 +19,7 @@
 // ==/UserScript==
 
 /*
-*	Voat Enhancement Suite - Version 0.0.3 - 2015-07-18
+*	Voat Enhancement Suite - Version 0.0.3 - 2015-08-10
 *
 *	Licensed under GNU General Public License.
 *	https://github.com/travis-g/Voat-Enhancement-Suite/blob/master/LICENSE
@@ -458,7 +458,8 @@ Utils = {
 		subverse: /^https?:\/\/(?:[\-\w\.]+\.)?voat\.co\/v\/([\w\.\+]+)/i,
 		subversePostListing: /^https?:\/\/(?:[\-\w\.]+\.)?voat\.co\/v\/([\w\.\+]+)(?:\/(new|rising|controversial|top))?\/?(?:\?.*)?$/i,
 		subverseSettings:  /^https?:\/\/(?:[\-\w\.]+\.)?voat.co\/(?:v\/[\-\w\.]+\/)?about\/edit/i,
-		api: /^https?:\/\/(?:[\-\w\.]+\.)?voat.co\/api\//i
+		api: /^https?:\/\/(?:[\-\w\.]+\.)?voat.co\/api\//i,
+		domain: /^https?:\/\/(?:[\-\w\.]+\.)?voat\.co\/domain\/([\w\.\+]+)/i
 	},
 	isVoat: function() {
 		var currURL = location.href;
@@ -507,6 +508,8 @@ Utils = {
 				pageType = 'prefs';
 			} else if (Utils.regexes.api.test(currURL)) {
 				pageType = 'api';
+			} else if (Utils.regexes.domain.test(currURL)) {
+				pageType = 'domain';
 			} else {
 				pageType = 'linklist';
 			}
